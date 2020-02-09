@@ -1,0 +1,64 @@
+import glob
+import os
+import numpy as np
+import cv2 
+from matplotlib import pyplot as plt
+import pymsgbox as pybox
+
+fast = cv2.FastFeatureDetector()
+path = pybox.prompt('Enter practise libary path.')
+formate = pybox.prompt('Enter file format.-- .png / .jpg ....')
+memorydata = pybox.prompt('Enter memorydata. (.txt)')
+#  liste= [0]                        
+#  tliste= [0]
+liste = []
+
+
+for filename in glob.glob(os.path.join(path,'*'+formate)):
+   img = cv2.imread(filename,-1)
+   kp = fast.detect(img,None)        #basic calls
+   i = 0
+    
+   generate() # refer def #generates keypoints data
+     
+   kpxs = max(kpx)-min(kpx)
+   kpys = max(kpy)-min(kpy)
+   kpas = max(kpa)-min(kpa)
+
+   compare
+      
+     
+
+def generate():
+    for i in kp :
+        
+       xkp = kp[i].pt[0]
+       ykp = kp[i].pt[1]
+        
+       kpx[i] = xkp
+       kpy[i] = ykp
+       kpa[i] = xkp + ykp
+       kpxy[i] = xkp +', '+ykp
+       
+       i = i+1
+
+def compare():
+    for j in range(-360,360):
+        if kpxy[j].split.pt[1] <= j :
+           length = len(liste)
+           liste[length +1] = kpxy[j]
+           if length >=2 :
+              jklist = liste[0] /liste[1]
+              liste.clear
+        
+           
+        j = j+1
+     seperator = ', '
+     file = open(memorydata,'w')
+     file.write(seperator.join(kpx,kpy,kpa,kpxy,kpas,kpys,kpas,jklist)
+     file.close
+def decide():               # unfnished spot 
+    file = open('memortdata','w')
+    file.split(", ")
+    file.close
+
